@@ -1,0 +1,85 @@
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
+h1 {
+    margin-bottom: 36px;
+}
+
+.email-activating {
+    line-height: 1.5;
+    background-color: #878cb0;
+    box-shadow: -6px 6px #5f627d;
+    padding: 16px;
+}
+
+.email-activating p {
+    margin: 0;
+}
+
+.email-activating p:first-child {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 11px;
+}
+
+.email-activating p:first-child:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0e0";
+    font-size: 1.2em;
+    vertical-align: -1.7px;
+    margin-right: 6px;
+}
+
+.email-activating span {
+    font-weight: bold;
+}
+
+.error-email-activating {
+    background-color: #c25757;
+    box-shadow: -6px 6px #803939;
+    color: #662e2e;
+}
+
+#registration-message {
+    margin-bottom: 36px;
+    padding: 16px;
+    background-color: #c25757;
+    box-shadow: -6px 6px #803939;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #662e2e;
+    display: none;
+}
+
+#registration-message:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f3ed";
+    font-size: 1.2em;
+    vertical-align: -1px;
+    margin-right: 6px;
+}
+
+#registration-form p {
+    margin: 18px 0 32px;
+}
+
+#registration-form input {
+    margin-top: 6px;
+}
+
+#registration-form input[type="submit"] {
+    margin-top: 50px;
+}
+
+.recaptcha-message {
+    font-weight: normal;
+    font-size: 0.8em;
+    margin: 0;
+}
+
+.recaptcha-message a {
+    text-decoration: none;
+    font-style: italic;
+    color: #5f627d;
+}

@@ -1,0 +1,44 @@
+.rules-type:not(:last-child) {
+	margin-bottom: 30px;
+}
+
+.rules-type p {
+	margin: 0;
+}
+
+.rules-type > p {
+	background-color: #101121;
+    color: #878cb0;
+    text-transform: uppercase;
+    padding: 14px;
+    text-align: center;
+}
+
+.rules-type > p i {
+	margin-right: 8px;
+	transition: 500ms;
+}
+
+.rules-type:hover i {
+	color: #FFF9CC;
+    transform: scale(1.15);
+    transition: 500ms;
+}
+
+.rule-clause {
+	padding: 14px;
+}
+
+.rule-punishment {
+	margin-top: 10px !important;
+	color: #c22727;
+}
+
+.rule-clause span {
+	font-weight: bold;
+	margin-right: 7px;
+}
+
+.rule-clause:nth-child(even) {
+    background-color: #9fa1b3;
+}

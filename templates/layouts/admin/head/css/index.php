@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="templates/css/index.css" data-page>

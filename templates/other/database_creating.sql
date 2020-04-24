@@ -1,0 +1,144 @@
+-- Создание базы, если есть необходимость - снимите комментарий --
+/*CREATE DATABASE IF NOT EXISTS new_caelestis;
+USE new_caelestis;*/
+
+
+-- Таблицы --
+CREATE TABLE IF NOT EXISTS site_user (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	username VARCHAR(24) NOT NULL,
+	email VARCHAR(120) NOT NULL,
+	password VARCHAR(255) NOT NULL,
+	activation_code VARCHAR(255) COLLATE utf8_bin,
+	registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP() NOT NULL,
+	balance MEDIUMINT UNSIGNED DEFAULT 0 NOT NULL,
+	xf_user_id INT UNSIGNED,
+	site_user_group_id TINYINT UNSIGNED DEFAULT 1 NOT NULL,
+	ban_reason VARCHAR(1000),
+	
+	PRIMARY KEY(id),
+	UNIQUE(username),
+	UNIQUE(email),
+	UNIQUE(activation_code),
+	UNIQUE(xf_user_id)
+) ENGINE InnoDB;
+
+CREATE TABLE IF NOT EXISTS site_user_group (
+	id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	group_name VARCHAR(100) NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE InnoDB;
+
+CREATE TABLE IF NOT EXISTS site_user_email_change (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	site_user_id INT UNSIGNED NOT NULL,
+	new_email VARCHAR(120) NOT NULL,
+	activation_code VARCHAR(255) COLLATE utf8_bin,
+	change_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP() NOT NULL,
+	is_change_success TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
+	
+	PRIMARY KEY(id),
+	UNIQUE(activation_code)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS site_cabinet_logs (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	site_user_id INT UNSIGNED NOT NULL,
+	game_server_status_id TINYINT UNSIGNED NOT NULL,
+	purchase_time TIMESTAMP NOT NULL,
+	end_action_time TIMESTAMP,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS game_server_status (
+	id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL,
+	month_price SMALLINT UNSIGNED NOT NULL,
+	infinite_price SMALLINT UNSIGNED NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS shop_items_basket (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	site_user_id INT UNSIGNED NOT NULL,
+	shop_game_item_id SMALLINT UNSIGNED NOT NULL,
+	count SMALLINT UNSIGNED NOT NULL,
+	purchase_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP() NOT NULL,
+	game_server_id TINYINT UNSIGNED NOT NULL,
+	is_received TINYINT(1) UNSIGNED NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS game_server (
+	id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL,
+	version VARCHAR(100) NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS site_article (
+	id MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	title VARCHAR(120) NOT NULL,
+	content VARCHAR(2000) NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS site_user_allowed_user_ip (
+	site_user_id INT UNSIGNED NOT NULL,
+	user_ip_id INT UNSIGNED NOT NULL,
+	
+	PRIMARY KEY(site_user_id, user_ip_id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS authorization_attempt (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	user_ip_id INT UNSIGNED NOT NULL,
+	attempt_count TINYINT UNSIGNED NOT NULL DEFAULT 1,
+	last_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP() NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS user_ip (
+	id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	ip VARCHAR(100) NOT NULL,
+	
+	PRIMARY KEY(id),
+	UNIQUE(ip)
+) ENGINE MyISAM;
+
+CREATE TABLE IF NOT EXISTS shop_game_item (
+	id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+	name VARCHAR(100) NOT NULL,
+	description VARCHAR(1000),
+	price SMALLINT UNSIGNED NOT NULL,
+	
+	PRIMARY KEY(id)
+) ENGINE MyISAM;
+
+-- Внешние ключи --
+ALTER TABLE site_user_email_change ADD FOREIGN KEY(site_user_id) REFERENCES site_user(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE site_cabinet_logs ADD FOREIGN KEY(site_user_id) REFERENCES site_user(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE site_cabinet_logs ADD FOREIGN KEY(game_server_status_id) REFERENCES game_server_status(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE site_user ADD FOREIGN KEY(xf_user_id) REFERENCES xf_user(user_id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE site_user ADD FOREIGN KEY(site_user_group_id) REFERENCES site_user_group(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE shop_items_basket ADD FOREIGN KEY(site_user_id) REFERENCES site_user(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE shop_items_basket ADD FOREIGN KEY(shop_game_item_id) REFERENCES shop_game_item(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE shop_items_basket ADD FOREIGN KEY(game_server_id) REFERENCES game_server(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE site_user_allowed_user_ip ADD FOREIGN KEY(site_user_id) REFERENCES site_user(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE site_user_allowed_user_ip ADD FOREIGN KEY(user_ip_id) REFERENCES user_ip(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE authorization_attempt ADD FOREIGN KEY(user_ip_id) REFERENCES user_ip(id) ON UPDATE CASCADE ON DELETE RESTRICT;
+
+-- Вставка данных --
+INSERT INTO site_user_group(group_name) VALUES ("Заблокированные"),("Игроки"),("Модераторы"),("Администраторы"),("Главные администраторы");

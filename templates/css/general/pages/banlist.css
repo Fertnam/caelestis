@@ -1,0 +1,39 @@
+.banlist-table tbody tr td:first-child {
+	white-space: nowrap;
+}
+
+.banlist-table img {
+	width: 24px;
+	vertical-align: -6.9px;
+	margin-right: 8px;
+}
+
+#banned-user-search-form {
+	display: grid;
+	grid-template-columns: 80% 1fr;
+	grid-gap: 15px;
+	margin-bottom: 30px;
+}
+
+#banned-user-search-form input[type="submit"] {
+	text-transform: none;
+}
+
+.pagination {
+	margin-top: 30px;
+}
+
+/* -- Медиа-запросы -- */
+/* Планшеты - портретная ориентация */
+@media screen and (max-width: 768px) {
+	.banlist-table td {
+    	text-transform: none !important;
+    }
+}
+
+/* Мобильные устройства - альбомная ориентация */
+@media screen and (max-width: 480px) {
+	#banned-user-search-form input {
+		grid-column: 1 / span 2;
+	}
+}

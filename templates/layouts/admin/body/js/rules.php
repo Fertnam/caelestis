@@ -1,0 +1,1 @@
+<script src="templates/js/rules.js" data-page></script>

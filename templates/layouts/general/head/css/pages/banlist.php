@@ -1,0 +1,1 @@
+<link rel="stylesheet" href="/templates/css/general/pages/banlist.css">

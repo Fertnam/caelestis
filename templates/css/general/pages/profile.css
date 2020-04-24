@@ -1,0 +1,140 @@
+#profile-wrapper {
+	display: grid;
+	grid-template-columns: 205px 1fr;
+	grid-gap: 30px;
+	grid-template-areas: "profile-skin profile-info";
+}
+
+#profile-wrapper > div:first-child {
+	width: 205px;
+	height: 410px;
+	position: relative;
+	grid-area: profile-skin;
+}
+
+#profile-wrapper > div:last-child {
+	grid-area: profile-info;
+}
+
+#profile-wrapper img {
+	display: block;
+	position: absolute;
+	transition: 600ms;
+}
+
+.skin-transparent {
+	opacity: 0;
+	transition: 600ms;
+}
+
+.profile-table {
+	font-weight: bold;
+	text-align: left;
+}
+
+.profile-table td {
+	padding: 12px;
+}
+
+.profile-table tr:nth-child(even) {
+	background-color: #c6c9de;
+}
+
+.profile-table tr:nth-child(odd) {
+	background-color: #9fa1b3;
+}
+
+.profile-change-wrapper {
+	margin-top: 30px;
+}
+
+.profile-change-wrapper div:not(:last-child) {
+	margin-bottom: 15px;
+}
+
+.profile-change-wrapper div:last-child form {
+	margin-bottom: 0;
+}
+
+.profile-change-wrapper button {
+	width: 100%;
+	border: none;
+	background-color: #101121;
+    color: #878cb0;
+    text-transform: uppercase;
+    padding: 12px;
+}
+
+.profile-change-wrapper button i {
+	margin-right: 8px;
+}
+
+.profile-change-wrapper form {
+	padding: 0 15px;
+	margin: 15px 0 30px;
+	display: none;
+}
+
+.profile-change-wrapper form input {
+	padding: 8px;
+	margin: 6px 0 22px;
+}
+
+.profile-change-wrapper form input[type="submit"] {
+	margin: 32px 0 0;
+}
+
+/* -- Медиа-запросы -- */
+/* Планшеты - портретная ориентация */
+@media screen and (max-width: 768px) {
+	#profile-wrapper {
+		grid-template-areas: "profile-skin profile-skin"
+							 "profile-info profile-info";
+	}
+}
+
+/* Мобильные устройства - альбомная ориентация */
+@media screen and (max-width: 599px) {
+    #profile-wrapper > div:first-child {
+		justify-self: center;
+	}
+}
+
+/* Мобильные устройства - альбомная ориентация */
+@media screen and (max-width: 480px) {
+	.profile-table td, .profile-table tr {
+		display: block;
+	}
+
+	.profile-table td {
+		text-align: center;
+	}
+
+	.profile-table tr {
+		background-color: transparent !important;
+	}
+
+	.profile-table tr td:first-of-type {
+		background-color: #9fa1b3;
+        color: #101121;
+	}
+
+	.profile-table tr {
+		margin-bottom: 0 !important;
+	}
+}
+
+/* -- Различные модификации -- */
+/* Модификации при ширине [600px; 768px] */
+@media screen and (min-width: 600px) and (max-width: 768px) {
+    #profile-wrapper > div:first-child {
+		width: auto;
+		display: flex;
+		justify-content: space-around;
+		flex-direction: row-reverse;
+	}
+
+	#profile-wrapper img {
+		position: static;
+	}
+}

@@ -1,0 +1,1 @@
+<script src="templates/js/index.js" data-page></script>
