@@ -1,9 +1,8 @@
 <?php
 	namespace factories;
 
-	use models\article\Model as ArticleModel;
-	use models\pernamentbanlist\Model as PernamentBanlistModel;
-	use models\tempbanlist\Model as TempBanlistModel;
+	use models\Article;
+	use models\Banlist;
 	use components\Pagination as PaginationComponent;
 
 	/**
@@ -24,8 +23,8 @@
 		 *
 		 * @return PaginationComponent Объект с пагинацией
 		 */
-		public static function getByArticles(int $page = 1, int $limitCount = ArticleModel::SHOW_BY_DEFAULT) : PaginationComponent {
-			return new PaginationComponent(ArticleModel::getArticlesCount(), $limitCount, $page);
+		public static function getByArticles(int $page = 1, int $limitCount = Article::SHOW_BY_DEFAULT) : PaginationComponent {
+			return new PaginationComponent(Article::getArticlesCount(), $limitCount, $page);
 		}
 
 		/**
@@ -40,8 +39,8 @@
 		 *
 		 * @return PaginationComponent Объект с пагинацией
 		 */
-		public static function getByPernamentBans(int $page = 1, int $limitCount = PernamentBanlistModel::SHOW_BY_DEFAULT) : PaginationComponent {
-			return new PaginationComponent(PernamentBanlistModel::getBansCount(), $limitCount, $page);
+		public static function getByPernamentBans(int $page = 1, int $limitCount = Banlist::PERNAMENTBANS_SHOW_BY_DEFAULT) : PaginationComponent {
+			return new PaginationComponent(Banlist::getPernamentBansCount(), $limitCount, $page);
 		}
 
 		/**
@@ -56,8 +55,8 @@
 		 *
 		 * @return PaginationComponent Объект с пагинацией
 		 */
-		public static function getByTempBans(int $page = 1, int $limitCount = TempBanlistModel::SHOW_BY_DEFAULT) : PaginationComponent {
-			return new PaginationComponent(TempBanlistModel::getBansCount(), $limitCount, $page);
+		public static function getByTempBans(int $page = 1, int $limitCount = Banlist::TEMPBANS_SHOW_BY_DEFAULT) : PaginationComponent {
+			return new PaginationComponent(Banlist::getTempBansCount(), $limitCount, $page);
 		}
 	}
 ?>

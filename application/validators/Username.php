@@ -56,14 +56,16 @@
 		public function isMatchToPattern(&$comment = null) : bool {
 			$result = false;
 
+			$Phraser = Phraser::getPhraser();
+
 			if (!preg_match(self::USERNAME_PATTERN, $this->_username)) {
-				$comment = Phraser::getPhraser()->getPhrase('username_incorrect_structure');
+				$comment = $Phraser->getPhrase('username_incorrect_structure');
 			} elseif ($this->_usernameLength < self::MIN_LENGTH) {
-				$comment = Phraser::getPhraser()->getPhrase('username_min_length', [
+				$comment = $Phraser->getPhrase('username_min_length', [
 					'length' => $this->_usernameLength
 				]);
 			} elseif ($this->_usernameLength > self::MAX_LENGTH) {
-				$comment = Phraser::getPhraser()->getPhrase('username_max_length', [
+				$comment = $Phraser->getPhrase('username_max_length', [
 					'length' => $this->_usernameLength
 				]);
 			} else {
@@ -83,20 +85,16 @@
 		 * @return bool Результат проверки
 		 */
 		public function isFree() : bool {
-			$result = false;
-
 			try {
 				$DbConnect = Database::getConnection();
 
-				$WritingQuery = $DbConnect->prepare('SELECT COUNT(*) FROM site_user WHERE username = :username');
+				$WritingQuery = $DbConnect->prepare('SELECT COUNT(*) FROM cs_user WHERE username = :username');
 
 				$WritingQuery->bindParam(':username', $this->_username);
 
 				$WritingQuery->execute();
 
-				if ($WritingQuery->fetchColumn() == 0) {
-					$result = true;
-				}
+				$result = ($WritingQuery->fetchColumn() == 0) ? true : false;
 			} catch (\PDOException $Exception) {
 				throw $Exception;
 			}

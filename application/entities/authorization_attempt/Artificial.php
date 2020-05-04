@@ -1,7 +1,7 @@
 <?php
-	namespace models\authorization_attempt\entities;
+	namespace entities\authorization_attempt;
 
-	use components\Database as DatatabaseConnect;
+	use components\Database;
 
 	/**
 	 * Класс, описывающий сущность несуществующей попытки авторизации
@@ -31,16 +31,16 @@
 		 */
 		public function update() {
 			try {
-				$DbConnect = DatatabaseConnect::getConnection();
+				$DbConnect = Datatabase::getConnection();
 
 				$DbConnect->beginTransaction();
 
-				$WritingQuery = $DbConnect->prepare('INSERT INTO user_ip(ip) VALUES (:ip) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)');
+				$WritingQuery = $DbConnect->prepare('INSERT INTO cs_ip(ip) VALUES (:ip) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id)');
 
 		 		$WritingQuery->bindParam(':ip', $this->_data['ip']);
 		 		$WritingQuery->execute();
 
-		 		$DbConnect->query('INSERT INTO authorization_attempt(user_ip_id) VALUES (' . $DbConnect->lastInsertId() . ')');
+		 		$DbConnect->query('INSERT INTO cs_authorization_attempt(cs_ip_id) VALUES (' . $DbConnect->lastInsertId() . ')');
 
 		 		$DbConnect->commit();
 			} catch (\PDOException $Exception) {

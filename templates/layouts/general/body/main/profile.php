@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <td>Дата регистрации</td>
-                        <td><?= $_SESSION['registration_date']; ?></td>
+                        <td><?= $_SESSION['registration_time']; ?></td>
                     </tr>
                     <tr>
                         <td>Баланс</td>

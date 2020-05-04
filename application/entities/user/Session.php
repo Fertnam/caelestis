@@ -1,12 +1,12 @@
 <?php
-	namespace models\user\entities;
+	namespace entities\user;
 
 	/**
 	 * Класс, описывающий сущность текущего пользователя сессии
 	 *
 	 * @version 1.0 Alpha
 	 */
-	class Session extends \models\user\entities\abstr\Existing {
+	class Session extends \entities\user\abstr\Existing {
 		/**
 		 * Конструктор для создания экземпляра данной сущности
 		 *

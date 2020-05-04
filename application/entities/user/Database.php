@@ -1,10 +1,10 @@
 <?php
-	namespace models\user\entities;
+	namespace entities\user;
 
 	use components\Phraser;
 	use components\abstr\interfaces\user\iDatabaseFunctionality;
-	use models\user\Model;
-	use models\authorization_attempt\entities\Database as AuthorizationAttempt;
+	use models\User as UserModel;
+	use \entities\authorization_attempt\Database as AuthorizationAttempt;
 
 	/**
 	 * Класс, описывающий сущность пользователя, полученного из БД
@@ -53,25 +53,15 @@
 			switch ($mode) {
 				default:
 				case self::EMAIL_USERNAME_MODE:
-					$userData = Model::getDataWithIp($marker);
+					$userData = UserModel::getDataWithIp($marker);
 				break;
 
 				case self::ACTIVATION_CODE_MODE:
-					$userData = Model::getDataWithIp($marker, Model::ACTIVATION_CODE_MODE);
-				break;
-
-				case self::ID_MODE:
-					//$userData = ($withIpList) ? Model::getDataWithIp((string) $marker) : Model::getData((string) $marker);
+					$userData = UserModel::getDataWithIp($marker, UserModel::ACTIVATION_CODE_MODE);
 				break;
 			}
 
-			if (!empty($userData)) {
-				$result = new self($userData);
-			} else {
-				$result = new Undetected;
-			}
-
-			return $result;
+			return (!empty($userData)) ? new self($userData) : new Undetected;
 		}
 
 		/* -------- Авторизация -------- */
@@ -108,12 +98,14 @@
 		public function isAuthorizationPossible(string $password, &$comment = null) : bool {
 			$result = false;
 
+			$Phraser = Phraser::getPhraser();
+
 			if (!$this->isActivated()) {
-				$comment = Phraser::getPhraser()->getPhrase('user_not_activated');
+				$comment = $Phraser->getPhrase('user_not_activated');
 			} elseif ($this->isBanned()) {
-				$comment = Phraser::getPhraser()->getPhrase('user_banned');
+				$comment = $Phraser->getPhrase('user_banned');
 			} elseif (!$this->isPasswordCorrect($password)) {
-				$comment = Phraser::getPhraser()->getPhrase('user_incorrect_password');
+				$comment = $Phraser->getPhrase('user_incorrect_password');
 			} else {
 				$result = true;
 			}

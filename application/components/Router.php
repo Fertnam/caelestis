@@ -1,7 +1,7 @@
 <?php
 	namespace components;
 
-	use components\exceptions\router\RouteNotFound as RouteNotFoundException;
+	use components\exceptions\router\RouteNotFoundException;
 	
 	/**
 	 * Класс, описывающий функционал роутера
@@ -32,7 +32,7 @@
 		}
 
 		/**
-		 * Вычленить контроллер, акшион и параметры из сегментов пути
+		 * Вычленить контроллер, его метод и параметры из сегментов пути
 		 *
 		 * @access protected
 		 *

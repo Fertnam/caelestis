@@ -1,7 +1,7 @@
 <?php
-	namespace models\authorization_attempt\entities;
+	namespace entities\authorization_attempt;
 
-	use models\authorization_attempt\Model;
+	use models\AuthorizationAttempt as AuthorizationAttemptModel;
 	use components\Database as DatatabaseConnect;
 
 	/**
@@ -10,6 +10,13 @@
 	 * @version 1.0 Alpha
 	 */
 	class Database extends \components\abstr\Entity {
+		/**
+		 * @access public
+		 *
+		 * @var int Количество возможных попыток по-умолчанию
+		 */
+		const POSSIBLE_ATTEMPT_COUNT = 3;
+
 		/**
 		 * Конструктор для создания экземпляра данного класса
 		 *
@@ -38,16 +45,12 @@
 		 */
 		public static function getEntity(string $ip) {
 			try {
-				$attemptData = Model::getActualData($ip);
-
-				if (!empty($attemptData)) {
-					return new self($attemptData);
-				} else {
-					return new Artificial($ip);
-				}
+				$attemptData = AuthorizationAttemptModel::getActualData($ip);
 			} catch (\PDOException $Exception) {
 				throw $Exception;
 			}
+
+			return (!empty($attemptData)) ? new self($attemptData) : new Artificial($ip);
 		}
 
 		/**
@@ -61,13 +64,13 @@
 			try {
 				$DbConnect = DatatabaseConnect::getConnection();
 				
-				$WritingQuery = $DbConnect->prepare('UPDATE authorization_attempt SET attempt_count = attempt_count + 1, last_time = CURRENT_TIMESTAMP() WHERE id = :id');
+				$WritingQuery = $DbConnect->prepare('UPDATE cs_authorization_attempt SET count = count + 1, last_time = CURRENT_TIMESTAMP() WHERE id = :id');
 
 				$WritingQuery->bindParam(':id', $this->_data['id'], \PDO::PARAM_INT);
 
 				$WritingQuery->execute();
 
-				$this->_data['attempt_count']++;
+				$this->_data['count']++;
 			} catch (\PDOException $Exception) {
 				throw $Exception;
 			}
@@ -85,7 +88,7 @@
 		public function isValid(&$restTime = null) : bool {
 			$result = false;
 
-			if ($this->_data['attempt_count'] <= 3) {
+			if ($this->_data['count'] <= self::POSSIBLE_ATTEMPT_COUNT) {
 		 		$result = true;
 		 	} else {
 		 		$restTime = (strtotime($this->_data['last_time']) + 600) - time();

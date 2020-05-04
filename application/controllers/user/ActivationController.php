@@ -2,9 +2,10 @@
 	namespace controllers\user;
 
 	use components\Phraser;
+	use components\Mailer;
 	use components\Logger;
-	use models\user\entities\Database as DatabaseUser;
-	use components\exceptions\user\activation\Basic as ActivationException;
+	use entities\user\Database as DatabaseUser;
+	use components\exceptions\user\activation\BasicActivationException;
 
 	/**
 	 * Класс контроллера, описывающий активацию аккаунтов пользователей
@@ -30,7 +31,7 @@
 				$result['comment'] = Phraser::getPhraser()->getPhrase('database_error');
 				
 				Logger::logError($Exception);
-			} catch (ActivationException $Exception) {
+			} catch (BasicActivationException $Exception) {
 				Logger::logError($Exception);
 			}
 

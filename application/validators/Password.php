@@ -63,21 +63,23 @@
 		public function isMatchToPattern(&$comment = null) : bool {
 			$result = false;
 
+			$Phraser = Phraser::getPhraser();
+
 			if ($this->_passwordLength < self::MIN_LENGTH) {
-				$comment = Phraser::getPhraser()->getPhrase('password_min_length', [
+				$comment = $Phraser->getPhrase('password_min_length', [
 					'length' => $this->_passwordLength
 				]);
 			} elseif ($this->_passwordLength > self::MAX_LENGTH) {
-				$comment = Phraser::getPhraser()->getPhrase('password_max_length', [
+				$comment = $Phraser->getPhrase('password_max_length', [
 					'length' => $this->_passwordLength
 				]);
 			} else {
 				if (!preg_match(self::NUMBERS_EXISTENCE_PATTERN, $this->_password)) {
-					$comment = Phraser::getPhraser()->getPhrase('password_not_exists_numbers');
+					$comment = $Phraser->getPhrase('password_not_exists_numbers');
 				} elseif (!preg_match(self::UPPER_LATIN_EXISTANCE_PATTERN, $this->_password)) {
-					$comment = Phraser::getPhraser()->getPhrase('password_not_exists_upper_latin');
+					$comment = $Phraser->getPhrase('password_not_exists_upper_latin');
 				} elseif (!preg_match(self::LOWER_LATIN_EXISTANCE_PATTERN, $this->_password)) {
-					$comment = Phraser::getPhraser()->getPhrase('password_not_exists_lower_latin');
+					$comment = $Phraser->getPhrase('password_not_exists_lower_latin');
 				} else {
 					$result = true;
 				}
@@ -98,14 +100,16 @@
 		public function isIdentity(&$comment = null) : bool {
 			$result = false;
 
+			$Phraser = Phraser::getPhraser();
+			
 			if (!is_null($this->_passwordRepeat)) {
 				if (strcmp($this->_password, $this->_passwordRepeat) === 0) {
 					$result = true;
 				} else {
-					$comment = Phraser::getPhraser()->getPhrase('password_not_identity');
+					$comment = $Phraser->getPhrase('password_not_identity');
 				}
 			} else {
-				$comment = Phraser::getPhraser()->getPhrase('password_not_argument');
+				$comment = $Phraser->getPhrase('password_not_argument');
 			}
 
 			return $result;

@@ -1,13 +1,13 @@
 <?php
-	namespace models\user\entities;
+	namespace entities\user;
 
 	use components\Phraser;
 	use components\Database;
 	use GuzzleHttp\Client as XFClient;
 	use GuzzleHttp\Exception\ClientException as XFClientException;
-	use components\exceptions\user\registration\Basic as RegistrationException;
-	use components\exceptions\user\registration\ForumFailed as ForumRegistrationException;
-	use components\exceptions\user\registration\SiteFailed as SiteRegistrationException;
+	use components\exceptions\user\registration\BasicRegistrationException;
+	use components\exceptions\user\registration\ForumRegistrationException;
+	use components\exceptions\user\registration\SiteRegistrationException;
 
 	/**
 	 * Класс, описывающий сущность несуществующего пользователя
@@ -51,7 +51,7 @@
 				$passwordHash = password_hash($this->_data['password'], PASSWORD_BCRYPT);
 				$activationCode = hash('sha3-256', $this->_data['username']);
 
-				$WritingQuery = $DbConnect->prepare('INSERT INTO site_user(username, email, password, activation_code, xf_user_id) VALUES (:username, :email, :password, :activation_code, :xf_user_id)');
+				$WritingQuery = $DbConnect->prepare('INSERT INTO cs_user(username, email, password, activation_code, xf_user_id) VALUES (:username, :email, :password, :activation_code, :xf_user_id)');
 
 				$WritingQuery->bindParam(':username', $this->_data['username']);
 				$WritingQuery->bindParam(':email', $this->_data['email']);
@@ -89,7 +89,7 @@
 
 				$params = [
 					'headers' => [
-                        'XF-Api-Key' => '1pVii_DCtNC-NZtgiJPNoCL4pP_naPiE',
+                        'XF-Api-Key' => 'qtUiwxM5VmefuLpfb3W-XiqQj2BLV6_i',
                         'XF-Api-User' => '1'
                     ],
                     'form_params' => [
@@ -100,7 +100,7 @@
                     ]
 				];
 
-				$ClientAnswer = $Client->post('mvc.caelestis/forum/api/users', $params);
+				$ClientAnswer = $Client->post('caelestis/forum/api/users', $params);
 				$answerBody = json_decode($ClientAnswer->getBody(), true);
 			} catch (XFClientException $Exception) {
 				$message = Phraser::getPhraser()->getPhrase('user_error_of_registration_on_forum', [
@@ -119,18 +119,15 @@
 		 *
 		 * @access public
 		 *
-		 * @throws SiteRegistrationFailedException
-		 * @throws ForumRegistrationFailedException
+		 * @throws BasicRegistrationException
 		 *
 		 * @return string Код активации аккаунта
 		 */
 		public function registerComplex() : string {
-			$activationCode;
-
 			try {
 				$xfUserId = $this->registerOnForum();
 				$activationCode = $this->registerOnSite($xfUserId);
-			} catch (RegistrationException $Exception) {
+			} catch (BasicRegistrationException $Exception) {
 				throw $Exception;
 			}
 

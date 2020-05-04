@@ -1,5 +1,5 @@
 <?php
-	namespace models\user;
+	namespace models;
 
 	use components\Database;
 
@@ -8,7 +8,7 @@
 	 *
 	 * @version 1.0 Alpha
 	 */
-	class Model {
+	class User {
 		/**
 		 * @access public
 		 *
@@ -29,21 +29,18 @@
 		 *
 		 * @param mixed Маркер для выборки
 		 * @param int $mode Режим выборки
-		 * @param array $columns Список столбцов для выборки
 		 *
 		 * @throws PDOException
 		 *
 		 * @return array Данные пользователя
 		 */
-		public static function getData($marker, int $mode = self::EMAIL_USERNAME_MODE, array $columns = ['su.*', 'sug.group_name']) : array {
+		public static function getData($marker, int $mode = self::EMAIL_USERNAME_MODE) : array {
 			try {
 				$DbConnect = Database::getConnection();
 
-				$columnsString = implode($columns, ', ');
-
 				$whereSql = self::getWhereSql($mode);
 
-				$WritingQuery = $DbConnect->prepare("SELECT $columnsString FROM site_user AS su JOIN site_user_group AS sug ON (su.site_user_group_id = sug.id) WHERE $whereSql");
+				$WritingQuery = $DbConnect->prepare("SELECT cu.*, cg.name AS group_name FROM cs_user AS cu JOIN cs_group AS cg ON (cu.cs_group_id = cg.id) WHERE $whereSql");
 
 				$WritingQuery->bindParam(':marker', $marker);
 				$WritingQuery->execute();
@@ -72,14 +69,11 @@
 		 *
 		 * @return array Массив с данными
 		 */
-		public static function getDataWithIp($marker, int $mode = self::EMAIL_USERNAME_MODE, array $columns = ['su.*', 'sug.group_name']) : array {
-			$result = [];
-			
+		public static function getDataWithIp($marker, int $mode = self::EMAIL_USERNAME_MODE) : array {
 			try {
-				$userData = self::getData($marker, $mode, $columns);
+				$result = self::getData($marker, $mode);
 
-				if (!empty($userData)) {
-					$result = $userData;
+				if (!empty($result)) {
 					$result['ip_list'] = self::getIpList($marker);
 				}
 			} catch (\PDOException $Exception) {
@@ -111,7 +105,7 @@
 
 				$whereSql = self::getWhereSql($mode);
 
-				$WritingQuery = $DbConnect->prepare("SELECT ip FROM user_ip WHERE id IN (SELECT user_ip_id FROM site_user_allowed_user_ip WHERE site_user_id = (SELECT id FROM site_user WHERE $whereSql))");
+				$WritingQuery = $DbConnect->prepare("SELECT ip FROM cs_ip WHERE id IN (SELECT cs_ip_id FROM cs_user_to_cs_ip WHERE cs_user_id = (SELECT id FROM cs_user WHERE $whereSql))");
 
 				$WritingQuery->bindParam(':marker', $marker);
 				$WritingQuery->execute();

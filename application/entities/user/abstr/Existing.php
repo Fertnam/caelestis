@@ -1,13 +1,13 @@
 <?php
-	namespace models\user\entities\abstr;
+	namespace entities\user\abstr;
 
 	use components\Phraser;
-	use components\Database as DatatabaseConnect;
+	use components\Database;
 	use components\abstr\interfaces\user\iExistingFunctionality;
 	use components\abstr\interfaces\iExists;
-	use components\exceptions\user\activation\Basic as ActivationException;
-	use components\exceptions\user\activation\SiteFailed as SiteActivationException;
-	use components\exceptions\user\activation\ForumFailed as ForumActivationException;
+	use components\exceptions\user\activation\BasicActivationException;
+	use components\exceptions\user\activation\SiteActivationException;
+	use components\exceptions\user\activation\ForumActivationException;
 	
 	/**
 	 * Абстрактный класс, описывающий сущность существующего пользователя
@@ -43,10 +43,12 @@
 		public final function activateOnSite(&$comment = null) : bool {
 			$result = true;
 
-			try {
-				$DbConnect = DatatabaseConnect::getConnection();
+			$Phraser = Phraser::getPhraser();
 
-				$WritingQuery = $DbConnect->prepare('UPDATE site_user SET activation_code = NULL WHERE id = :id');
+			try {
+				$DbConnect = Datatabase::getConnection();
+
+				$WritingQuery = $DbConnect->prepare('UPDATE cs_user SET activation_code = NULL WHERE id = :id');
 
 				$WritingQuery->bindParam(':id', $this->_data['id'], \PDO::PARAM_INT);
 
@@ -55,16 +57,14 @@
 				if ($WritingQuery->rowCount() == 0) {
 					$result = false;
 
-					$comment = Phraser::getPhraser()->getPhrase('user_already_activated_on_site', [
+					$comment = $Phraser->getPhrase('user_already_activated_on_site', [
 						'id' => $this->_data['id']
 					]);
 				}
 			} catch (\PDOException $Exception) {
-				$message = Phraser::getPhraser()->getPhrase('user_error_of_activation_on_site');
+				$comment = $Phraser->getPhrase('user_error_of_activation_on_site');
 
-				$comment = $message;
-
-				throw new SiteActivationException($Exception, $message);
+				throw new SiteActivationException($Exception, $comment);
 			}
 
 			return $result;
@@ -84,8 +84,10 @@
 		public final function activateOnForum(&$comment = null) : bool {
 			$result = true;
 
+			$Phraser = Phraser::getPhraser();
+
 			try {
-				$DbConnect = DatatabaseConnect::getConnection();
+				$DbConnect = Datatabase::getConnection();
 
 				$WritingQuery = $DbConnect->prepare("UPDATE xf_user SET user_state = 'valid' WHERE user_id = :user_id");
 
@@ -96,16 +98,14 @@
 				if ($WritingQuery->rowCount() == 0) {
 					$result = false;
 
-					$comment = Phraser::getPhraser()->getPhrase('user_already_activated_on_forum', [
+					$comment = $Phraser->getPhrase('user_already_activated_on_forum', [
 						'xf_id' => $this->_data['xf_user_id']
 					]);
 				}
 			} catch (\PDOException $Exception) {
-				$message = Phraser::getPhraser()->getPhrase('user_error_of_activation_on_forum');
+				$comment = $Phraser->getPhrase('user_error_of_activation_on_forum');
 
-				$comment = $message;
-
-				throw new ForumActivationException($Exception, $message);
+				throw new ForumActivationException($Exception, $comment);
 			}
 
 			return $result;
@@ -120,8 +120,7 @@
 		 *
 		 * @param mixed &$comment Контейнер для хранения ошибки
 		 *
-		 * @throws SiteActivationFailedException
-		 * @throws ForumActivationFailedException
+		 * @throws BasicActivationException
 		 * @throws PDOException
 		 *
 		 * @return bool Статус активации
@@ -140,7 +139,7 @@
 				} else {
 					$DbConnect->rollBack();
 				}
-			} catch (ActivationException $Exception) {
+			} catch (BasicActivationException $Exception) {
 				$DbConnect->rollBack();
 
 				throw $Exception;
@@ -171,7 +170,7 @@
 		 * @return bool Результат проверки
 		 */
 		public function isBanned() : bool {
-			return ($this->_data['site_user_group_id'] == 1);
+			return ($this->_data['cs_group_id'] == 1);
 		}
 
 		/**

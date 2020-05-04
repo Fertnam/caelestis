@@ -1,8 +1,6 @@
 <?php
 	namespace components\view;
 
-	use components\exceptions\template\PageNotFound as PageNotFoundException;
-
 	/**
 	 * Класс, описывающий View для шаблона general
 	 *
@@ -15,8 +13,6 @@
 		 * @access public
 		 *
 		 * @param string $pageName Имя страницы
-		 *
-		 * @throws PageNotFoundException
 		 *
 		 * @return $this
 		 */

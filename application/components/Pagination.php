@@ -47,25 +47,31 @@
 			$this->_pageLimit = $pageLimit;
 			$this->_pageAmount = (int) ceil($this->_pageTotal / $this->_pageLimit);
 
-			$this->setCorrectCurrentPage($currentPage);
+			$this->setCorrectPages($currentPage);
 		}
 
 		/**
-		 * Установить корректную текущую страницу
+		 * Установить корректные страницы
 		 *
 		 * @access private
 		 *
 		 * @param int $currentPage Номер текущей страницы
 		 */
-		private function setCorrectCurrentPage(int $currentPage) {
-			$this->_currentPage = $currentPage;
-
+		private function setCorrectPages(int $currentPage) {
 			if ($currentPage > 0) {
-				if ($currentPage > $this->_pageAmount) {
+				$this->_previousPage = $currentPage - 1;
+
+				if ($this->_currentPage > $this->_pageAmount) {
 					$this->_currentPage = $this->_pageAmount;
+					$this->_nextPage = $this->_pageAmount;
+				} else {
+					$this->_currentPage = $currentPage;
+					$this->_nextPage = $this->_currentPage + 1;
 				}
 			} else {
+				$this->_previousPage = 1;
 				$this->_currentPage = 1;
+				$this->_nextPage = 2;
 			}
 		}
 
@@ -90,7 +96,7 @@
 		 * @return string HTML-код левой части пагинации
 		 */
 		private function getLeftPart() : string {
-			$result = "<a href=\"" . self::GET_INDEX . ($this->_currentPage - 1) . "\" id=\"prev-page\"><i class=\"fas fa-arrow-left\"></i></a>";
+			$result = "<a href=\"" . self::GET_INDEX . $this->_previousPage . "\" id=\"prev-page\"><i class=\"fas fa-arrow-left\"></i></a>";
 
 			return $result;
 		}
@@ -103,7 +109,7 @@
 		 * @return string HTML-код правой части пагинации
 		 */
 		private function getRightPart() : string {
-			$result = "<a href=\"" . self::GET_INDEX . ($this->_currentPage + 1) . "\" id=\"next-page\"><i class=\"fas fa-arrow-right\"></i></a>";
+			$result = "<a href=\"" . self::GET_INDEX . $this->_nextPage . "\" id=\"next-page\"><i class=\"fas fa-arrow-right\"></i></a>";
 
 			return $result;
 		}

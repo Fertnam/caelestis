@@ -1,7 +1,7 @@
 <?php
 	namespace components\exceptions\user\activation;
 	
-	class ForumFailed extends Basic {
+	class ForumActivationException extends BasicActivationException {
 		public function __construct(\Throwable $Exception = null, string $message = null) {
 			parent::__construct($Exception, (string) $message);
 		}

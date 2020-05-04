@@ -8,7 +8,7 @@
 	 */
 	class Database {
 		/**
-		 * @access public
+		 * @access private
 		 *
 		 * @static
 		 *
@@ -26,8 +26,7 @@
 		 * @return $this
 		 */
 		private function __construct() {
-			$dbParamsPath = CONFIG_PATH . 'db_params.php';
-			$dbParams = is_file($dbParamsPath) ? require($dbParamsPath) : null;
+			$dbParams = require(CONFIG_PATH . 'db_params.php');
 
 			self::$_Connection = new \PDO($dbParams['dsn'], $dbParams['login'], $dbParams['password'], $dbParams['options']);
 		}

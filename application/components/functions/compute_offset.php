@@ -8,6 +8,6 @@
 	 * @return int Смещение
 	 */
 	function compute_offset(int $page, int $count) : int {
-		return ($page - 1) * $count;
+		return ($page != 0) ? (($page - 1) * $count) : 0;
 	}
 ?>

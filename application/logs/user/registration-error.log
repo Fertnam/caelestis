@@ -1,0 +1,36 @@
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST mvc.caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST mvc.caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST mvc.caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST caelestis/forum/api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "email_addresses_must_be_unique",
+            "message": "\u0410\u0434\u (truncated...)
+
+

@@ -1,40 +1,40 @@
 <?php
-	namespace models\tempbanlist;
+	namespace models;
 
 	use components\Database;
 
 	/**
-	 * Класс модели для получения данных о временных банах
+	 * Класс модели для получения данных о статьях
 	 *
 	 * @version 1.0 Alpha
 	 */
-	class Model {
+	class Article {
 		/**
 		 * @access public
 		 *
 		 * @var int Количество записей на одну страницу по-умолчанию
 		 */
-		const SHOW_BY_DEFAULT = 6;
+		const SHOW_BY_DEFAULT = 3;
 
 		/**
-		 * Получить данные о временных банах для одной страницы
+		 * Получить данные о статьях для одной страницы
 		 *
 		 * @access public
 		 *
 		 * @static 
 		 *
 		 * @param int $page Номер страницы
-		 * @param int $count Количество банов на страницу
+		 * @param int $count Количество статей на страницу
 		 *
 		 * @throws PDOException
 		 *
-		 * @return array Массив временных банов
+		 * @return array Массив статей
 		 */
-		public static function getBansByPage(int $page, int $count = self::SHOW_BY_DEFAULT) : array {
+		public static function getArticlesByPage(int $page, int $count = self::SHOW_BY_DEFAULT) : array {
 			try {
 				$DbConnect = Database::getConnection();
 
-				$WritingQuery = $DbConnect->prepare('SELECT * FROM banlist WHERE end IS NOT NULL ORDER BY id DESC LIMIT :offset, :count');
+				$WritingQuery = $DbConnect->prepare('SELECT * FROM cs_article ORDER BY id DESC LIMIT :offset, :count');
 
 				$WritingQuery->bindValue(':offset', compute_offset($page, $count), \PDO::PARAM_INT);
 				$WritingQuery->bindParam(':count', $count, \PDO::PARAM_INT);
@@ -51,7 +51,7 @@
 		}
 
 		/**
-		 * Получить количество всех временных банов
+		 * Получить количество всех статей
 		 *
 		 * @access public
 		 *
@@ -59,13 +59,13 @@
 		 *
 		 * @throws PDOException
 		 *
-		 * @return int Количество временных банов в таблице
+		 * @return int Количество статей в таблице
 		 */
-		public static function getBansCount() : int {
+		public static function getArticlesCount() : int {
 			try {
 				$DbConnect = Database::getConnection();
 
-				$WritingQuery = $DbConnect->query('SELECT COUNT(*) FROM banlist WHERE end IS NOT NULL');
+				$WritingQuery = $DbConnect->query('SELECT COUNT(*) FROM cs_article');
 
 				$result = $WritingQuery->fetchColumn();
 			} catch (\PDOException $Exception) {

@@ -12,13 +12,13 @@
 <?php
     } else {
 ?>
-<h2>Привет, <span><?= $_SESSION['username'] ?></span>!</h2>
+<h2 class="aside-h2-with-border">Привет, <span><?= $_SESSION['username'] ?></span>!</h2>
 <div id="usermenu-wrapper">
     <div>
         <img src="/application/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=3&size=62" alt="Аватарка">
     </div>
     <ul>
-        <?= $_SESSION['site_user_group_id'] >= 3 ? "<li><a href=\"\">Админ-панель</a></li>" : null; ?>
+        <?= $_SESSION['cs_group_id'] >= 3 ? "<li><a href=\"\">Админ-панель</a></li>" : null; ?>
         <li><a href="">Личный кабинет</a></li>
         <li><a href="/profile">Профиль игрока</a></li>
         <li><a href="">Пополнить баланс</a></li>

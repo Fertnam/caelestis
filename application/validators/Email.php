@@ -54,10 +54,12 @@
 		public function isMatchToPattern(&$comment = null) : bool {
 			$result = false;
 
+			$Phraser = Phraser::getPhraser();
+
 			if (!preg_match(self::PATTERN, $this->_email)) {
-				$comment = Phraser::getPhraser()->getPhrase('email_incorrect_structure');
+				$comment = $Phraser->getPhrase('email_incorrect_structure');
 			} elseif ($this->_emailLength > self::MAX_LENGTH) {
-				$comment = Phraser::getPhraser()->getPhrase('email_max_length', [
+				$comment = $Phraser->getPhrase('email_max_length', [
 					'length' => $this->_emailLength
 				]);
 			} else {
@@ -77,20 +79,16 @@
 		 * @return bool Результат проверки
 		 */
 		public function isFree() : bool {
-			$result = false;
-
 			try {
 				$DbConnect = Database::getConnection();
 
-				$WritingQuery = $DbConnect->prepare('SELECT COUNT(*) FROM site_user WHERE email = :email');
+				$WritingQuery = $DbConnect->prepare('SELECT COUNT(*) FROM cs_user WHERE email = :email');
 
 				$WritingQuery->bindParam(':email', $this->_email);
 
 				$WritingQuery->execute();
 
-				if ($WritingQuery->fetchColumn() == 0) {
-					$result = true;
-				}
+				$result = ($WritingQuery->fetchColumn() == 0) ? true : false;
 			} catch (\PDOException $Exception) {
 				throw $Exception;
 			}

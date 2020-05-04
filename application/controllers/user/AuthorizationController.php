@@ -3,7 +3,7 @@
 
 	use components\Phraser;
 	use components\Logger;
-	use models\user\entities\Database as DatabaseUser;
+	use entities\user\Database as DatabaseUser;
 
 	/**
 	 * Класс контроллера, описывающий авторизацию аккаунтов пользователей
@@ -63,6 +63,34 @@
 			}
 
 			echo $result;
+		}
+		
+		/**
+		 * Провести авторизацию пользователя в мобильном приложении
+		 *
+		 * @access public
+		 *
+		 * @param mixed $username Логин пользователя
+		 * @param mixed $password Пароль пользователя
+		 */
+		public function actionMobile($username, $password) {
+			$result = ['success' => false, 'comment' => null];
+			
+			try {
+				$DatabaseUser = DatabaseUser::getEntity($username);
+
+				$result['success'] = $DatabaseUser->isAuthorizationPossibleComplex($password, $_SERVER['REMOTE_ADDR'], $result['comment']);
+
+				if ($result['success']) {
+					$result['comment'] = $DatabaseUser->getJSON();
+				}
+			} catch (\PDOException $Exception) {
+				$result['comment'] = Phraser::getPhraser()->getPhrase('database_error');
+
+				Logger::logError($Exception);
+			}
+
+			echo json_encode($result, JSON_UNESCAPED_UNICODE);
 		}
 	}
 ?>

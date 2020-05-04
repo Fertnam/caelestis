@@ -1,5 +1,5 @@
 <?php
-	namespace models\user\entities;
+	namespace entities\user;
 
 	use components\Phraser;
 	use components\abstr\interfaces\user\iDatabaseFunctionality;
@@ -54,7 +54,6 @@
 		 * @return bool Статус активации
 		 */
 		public final function activateComplex(&$comment = null) : bool {
-			//print_r($this->_Phraser);
 			$comment = Phraser::getPhraser()->getPhrase('user_incorrect_activation_code');
 
 			return false;

@@ -1,5 +1,5 @@
 <?php
-	namespace models\authorization_attempt;
+	namespace models;
 
 	use components\Database;
 	
@@ -8,7 +8,7 @@
 	 *
 	 * @version 1.0 Alpha
 	 */
-	class Model {
+	class AuthorizationAttempt {
 		/**
 		 * Получить актуальные данные о попытках авторизации по указанному ip
 		 *
@@ -26,7 +26,7 @@
 			try {
 				$DbConnect = Database::getConnection();
 
-				$WritingQuery = $DbConnect->prepare('SELECT aa.id AS id, aa.attempt_count AS attempt_count, aa.last_time AS last_time, ui.ip FROM authorization_attempt AS aa JOIN user_ip AS ui ON (aa.user_ip_id = ui.id) WHERE ui.ip = :ip AND aa.last_time >= (CURRENT_TIMESTAMP() - INTERVAL 10 MINUTE)');
+				$WritingQuery = $DbConnect->prepare('SELECT ca.id, ca.count, ca.last_time, ci.ip FROM cs_authorization_attempt AS ca JOIN cs_ip AS ci ON (ca.cs_ip_id = ci.id) WHERE ci.ip = :ip AND ca.last_time >= (CURRENT_TIMESTAMP() - INTERVAL 10 MINUTE)');
 
 				$WritingQuery->bindParam(':ip', $ip);
 			 	$WritingQuery->execute();

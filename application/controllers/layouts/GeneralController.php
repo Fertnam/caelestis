@@ -2,14 +2,13 @@
 	namespace controllers\layouts;
 
 	use components\Logger;
-	use models\article\Model as ArticleModel;
-	use models\pernamentbanlist\Model as PernamentBanlistModel;
-	use models\tempbanlist\Model as TempBanlistModel;
+	use models\Article;
+	use models\Banlist;
 	use factories\Pagination as PaginationFactory;
 	use factories\LayoutData as LayoutDataFactory;
 	use components\view\General as View;
 	use components\Router;
-	use components\exceptions\template\PageNotFound as PageNotFoundException;
+	use components\Mailer;
 
 	/**
 	 * Класс контроллера, описывающий загрузку страниц сайта для шаблона General
@@ -39,12 +38,13 @@
 		 * @param int $page Номер страницы
 		 * @param int $limitCount Количество записей на странице
 		 */
-		public function actionIndex(int $page = 1, int $limitCount = ArticleModel::SHOW_BY_DEFAULT) {
+		public function actionIndex(int $page = 1, int $limitCount = Article::SHOW_BY_DEFAULT) {
 			$Pagination = PaginationFactory::getByArticles($page, $limitCount);
 			$page = $Pagination->getCurrentPage();
 
 			$data['basic'] = LayoutDataFactory::getForGeneral();
-			$data['articles'] = ArticleModel::getArticlesByPage($page, $limitCount);
+
+			$data['articles'] = Article::getArticlesByPage($page, $limitCount);
 
 			$View = new View('index');
 			$View->generate($data, $Pagination);
@@ -58,12 +58,12 @@
 		 * @param int $page Номер страницы
 		 * @param int $limitCount Количество записей на странице
 		 */
-		public function actionPernamentBans(int $page = 1, int $limitCount = PernamentBanlistModel::SHOW_BY_DEFAULT) {
+		public function actionPernamentBans(int $page = 1, int $limitCount = Banlist::PERNAMENTBANS_SHOW_BY_DEFAULT) {
 			$Pagination = PaginationFactory::getByPernamentBans($page, $limitCount);
 			$page = $Pagination->getCurrentPage();
 
 			$data['basic'] = LayoutDataFactory::getForGeneral();
-			$data['bans'] = PernamentBanlistModel::getBansByPage($page, $limitCount);
+			$data['bans'] = Banlist::getPernamentBansByPage($page, $limitCount);
 
 			$View = new View('banlist/pernaments');
 			$View->generate($data, $Pagination);
@@ -77,12 +77,12 @@
 		 * @param int $page Номер страницы
 		 * @param int $limitCount Количество записей на странице
 		 */
-		public function actionTempBans(int $page = 1, int $limitCount = TempBanlistModel::SHOW_BY_DEFAULT) {
+		public function actionTempBans(int $page = 1, int $limitCount = Banlist::TEMPBANS_SHOW_BY_DEFAULT) {
 			$Pagination = PaginationFactory::getByTempBans($page, $limitCount);
 			$page = $Pagination->getCurrentPage();
 
 			$data['basic'] = LayoutDataFactory::getForGeneral();
-			$data['bans'] = TempBanlistModel::getBansByPage($page, $limitCount);
+			$data['bans'] = Banlist::getTempBansByPage($page, $limitCount);
 
 			$View = new View('banlist');
 			$View->generate($data, $Pagination);
