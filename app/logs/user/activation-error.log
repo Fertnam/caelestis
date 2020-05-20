@@ -1,0 +1,21 @@
+Ошибка активации: Возникла ошибка при активации аккаунта на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'username' (SQL: insert into `cs_user` (`activation_code`) values (?))
+
+Ошибка активации: Возникла ошибка при активации аккаунта на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'username' (SQL: insert into `cs_user` (`activation_code`) values (?))
+
+Ошибка активации: Возникла ошибка при активации аккаунта на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'username' (SQL: insert into `cs_user` (`activation_code`) values (?))
+
+Ошибка активации: Возникла ошибка при активации аккаунта на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'username' (SQL: insert into `cs_user` (`activation_code`) values (?))
+
+Ошибка активации: Возникла ошибка при активации аккаунта :username с адресом :email на форуме
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause' (SQL: update `xf_user` set `user_state` = valid where `id` is null)
+
+Ошибка активации: Возникла ошибка при активации аккаунта :username с адресом :email на форуме
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'id' in 'where clause' (SQL: update `xf_user` set `user_state` = valid where `id` is null)
+
+Ошибка активации: Возникла ошибка при активации аккаунта :username с адресом :email на форуме
+Сообщение от предыдущего исключения: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'username' (SQL: insert into `xf_user` (`user_state`) values (valid))
+

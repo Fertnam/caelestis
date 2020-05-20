@@ -8,8 +8,8 @@
         <h1>Профиль игрока</h1>
         <div id="profile-wrapper">
             <div>
-                <img id="back-profile-skin-img-id" src="/application/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=2&size=205" alt="Задняя часть скина">
-                <img id="front-profile-skin-img-id" src="/application/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=1&size=205" alt="Передняя часть скина">
+                <img id="back-profile-skin-img-id" src="/app/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=2&size=205" alt="Задняя часть скина">
+                <img id="front-profile-skin-img-id" src="/app/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=1&size=205" alt="Передняя часть скина">
             </div>
             <div>
                 <table class="table-model profile-table without-general-adaptive">
@@ -23,7 +23,7 @@
                     </tr>
                     <tr>
                         <td>Группа</td>
-                        <td><?= $_SESSION['group_name']; ?></td>
+                        <td><?= $_SESSION['group']['name']; ?></td>
                     </tr>
                     <tr>
                         <td>Дата регистрации</td>

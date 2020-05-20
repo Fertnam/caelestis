@@ -1,0 +1,138 @@
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST mvc.caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST mvc.caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST mvc.caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fertnam с адресом fertnam@mail.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST caelestis/forum/api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "email_addresses_must_be_unique",
+            "message": "\u0410\u0434\u (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта fsdffertnam с адресом sdffertnamchannel@gmail.com на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Fox с адресом fertnam@yandex.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST caelestis/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator с адресом fertnam@yandex.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST caelestis/forum/api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "email_addresses_must_be_unique",
+            "message": "\u0410\u0434\u (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$NQNbBrxaISwNy881Cla93.ZBP9Q3O0KJSjSnkANBCZsne65lpjCfK, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$GEJk8qjAei4mi4hoExrx4e6YXPHg994URhKj7kjgaFUOASKXIy2iO, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$GsAY.0ViMagMD27jUfdHbuPqnq42w4PadVgJ7Zt5Lw5f/k3.Sd0pG, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$HPinvuxDgNcU1nQdiDTFPev6mwbINHGNTdM260Ll2QQZWC/mvaPQ2, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$dvIWGPzdUBG9xCsjJZDmseQFobac.5QPe5LH6/iaCUlRJJwqBbgBe, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$vu957BF38IMRtp.JCS.nfOgU5jwn.hteuy4EsblCQsJjvZOqPL13e, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator11 с адресом fert@yandex.ru на сайте. Пожалуйста, обратитесь к администрации проекта
+Сообщение от предыдущего исключения: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'repeat_password' in 'field list' (SQL: insert into `cs_user` (`username`, `email`, `password`, `repeat_password`, `activation_code`, `xf_user_id`) values (Venator11, fert@yandex.ru, $2y$10$atwnTLAtlMq9HmADTAKRVOjnogxIJ8ifFAZx61Z10KB/RSZnrJiyq, 1Babka, b012cf41c71e670c00fb495402c09b48cb69ba9133af7f4e48e2e9d7a077ccff, ?))
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator121 с адресом ferdt@yandex.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST http://caelestis.el/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator121 с адресом ferdt@yandex.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST http://caelestis.el/forum/api/users` resulted in a `401 Unauthorized` response:
+{
+    "errors": [
+        {
+            "code": "api_key_not_found",
+            "message": "API key provided in request (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Venator121 с адресом ferdt@yandex.ru на форуме. Пожалуйста, обратитесь к администратрации проекта
+Сообщение от предыдущего исключения: Client error: `POST http://caelestis.el/forum/api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "usernames_must_be_unique",
+            "message": "\u0418\u043c\u044f \ (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Chmo с адресом chmo@sdasd.re на форуме
+Сообщение от предыдущего исключения: Client error: `POST http://caelestis.el/forum//api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "usernames_must_be_unique",
+            "message": "\u0418\u043c\u044f \ (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Chmo с адресом chmo@sdasd.re на форуме
+Сообщение от предыдущего исключения: Client error: `POST http://caelestis.el/forum//api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "usernames_must_be_unique",
+            "message": "\u0418\u043c\u044f \ (truncated...)
+
+
+Ошибка регистрации: Возникла ошибка при регистрации аккаунта Chmo с адресом chmo@sdasd.re на форуме
+Сообщение от предыдущего исключения: Client error: `POST http://caelestis.el/forum//api/users` resulted in a `400 Bad Request` response:
+{
+    "errors": [
+        {
+            "code": "usernames_must_be_unique",
+            "message": "\u0418\u043c\u044f \ (truncated...)
+
+

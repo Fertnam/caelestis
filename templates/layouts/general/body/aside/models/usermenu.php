@@ -1,7 +1,7 @@
 <?php
     if (empty($_SESSION)) {
 ?>
-        <form class="form-model" id="authorization-form">
+        <form class="form-model" id="authorization-form" action="/register/mobile" method="POST">
             <h2>Авторизация</h2>
             <input name="username" id="authorization-username-input" type="text" placeholder="&#xf007; Логин">
             <input name="password" id="authorization-password-input" type="password" placeholder="&#xf023; Пароль">
@@ -15,7 +15,7 @@
 <h2 class="aside-h2-with-border">Привет, <span><?= $_SESSION['username'] ?></span>!</h2>
 <div id="usermenu-wrapper">
     <div>
-        <img src="/application/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=3&size=62" alt="Аватарка">
+        <img src="/app/components/skin.php?user=<?= $_SESSION['username'] ?>&mode=3&size=62" alt="Аватарка">
     </div>
     <ul>
         <?= $_SESSION['cs_group_id'] >= 3 ? "<li><a href=\"\">Админ-панель</a></li>" : null; ?>

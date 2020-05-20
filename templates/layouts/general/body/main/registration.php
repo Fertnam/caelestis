@@ -11,7 +11,7 @@
 ?>
         <h1>Регистрация</h1>
         <p id="registration-message"></p>
-        <form id="registration-form" class="form-model">
+        <form id="registration-form" class="form-model" action="/register" method="POST">
             <label for="registration-username-input">Логин:</label>
             <input name="username" id="registration-username-input" type="text">
             <p id="username-message"></p>
@@ -22,7 +22,7 @@
             <input name="password" id="registration-password-input" type="password">
             <p id="password-message"></p>
             <label for="registration-password-repeat-input">Повторите пароль:</label>
-            <input name="password-repeat" id="registration-password-repeat-input" type="password">
+            <input name="repeat-password" id="registration-password-repeat-input" type="password">
             <p id="password-repeat-message"></p>
             <input type="hidden" class="recaptcha-input" name="recaptcha">
             <p class="recaptcha-message"><i class="fab fa-google"></i> This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy">Privacy Policy</a> and <a href="https://policies.google.com/terms">Terms of Service</a> apply.</p>
