@@ -1,29 +1,62 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import GeneralHome from '@/views/general/Home.vue';
+import GeneralBanlist from '@/views/general/Banlist.vue';
+import GeneralDonate from '@/views/general/Donate.vue';
+import GeneralRules from '@/views/general/Rules.vue';
+import GeneralRegistration from '@/views/general/Registration.vue';
+import GeneralProfile from '@/views/general/Profile.vue';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import('@/layouts/General.vue'),
+    children: [
+      {
+        path: '',
+        name: 'general-home',
+        component: GeneralHome
+      },
+      {
+        path: 'banlist',
+        name: 'general-banlist',
+        component: GeneralBanlist
+      },
+      {
+        path: 'donate',
+        name: 'general-donate',
+        component: GeneralDonate
+      },
+      {
+        path: 'donate',
+        name: 'general-donate',
+        component: GeneralDonate
+      },
+      {
+        path: 'rules',
+        name: 'general-rules',
+        component: GeneralRules
+      },
+      {
+        path: 'registration',
+        name: 'general-registration',
+        component: GeneralRegistration
+      },
+      {
+        path: 'profile',
+        name: 'general-profile',
+        component: GeneralProfile
+      }
+    ]
   }
-]
+];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
 
-export default router
+export default router;
