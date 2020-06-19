@@ -3,7 +3,7 @@
     tag="img"
     :to="{name: 'general-home'}"
     id="logo"
-    src="assets/images/logo.png"
+    src="/images/logo.png"
     alt="Логотип"
     draggable="false"
     exact

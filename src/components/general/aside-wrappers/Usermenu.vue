@@ -6,7 +6,7 @@
 
 <script>
   import AsideWrapper from '../models/AsideWrapper';
-  import AuthorizationForm from '../forms/AuthorizationForm';
+  import AuthorizationForm from '../forms/Authorization';
 
   export default {
     components: {

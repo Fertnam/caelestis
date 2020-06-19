@@ -19,7 +19,7 @@
     border: none;
     text-align: center;
     padding: 8px;
-    margin-bottom: 20px;
+    margin-top: 0;
     transition: none;
   }
 
@@ -29,13 +29,11 @@
   }
 
   .aside-form-error-wrapper {
-    margin: 15px 0;
-    padding: .1px;
     color: #c45252;
   }
 
   .aside-form-model input[type="submit"] {
-    margin-bottom: 0;
+    margin-top: 30px;
     text-transform: none;
     box-shadow: -4.5px 4.5px #5f627d;
     transition-property: box-shadow, background-color;

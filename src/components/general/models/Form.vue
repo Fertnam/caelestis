@@ -11,9 +11,7 @@
 
   .form-model input, .form-model button {
     font-size: 1em;
-  }
-
-  .form-model input {
+    margin: 6px 0 22px;
     display: block;
     width: 100%;
     font-weight: bold;
@@ -25,10 +23,15 @@
     transition-duration: 500ms;
   }
 
-  .form-model input[type="submit"] {
+  .form-error-wrapper {
+    margin-bottom: 28px;
+  }
+
+  .form-model input[type="submit"], .form-model button {
     cursor: pointer;
     transition-property: background-color, border;
     text-transform: uppercase;
+    margin: 32px 0 0;
   }
 
   .form-model input:not([type="submit"]):focus {
@@ -36,7 +39,7 @@
     transition: 500ms;
   }
 
-  .form-model input[type="submit"]:hover {
+  .form-model input[type="submit"]:hover, .form-model button:hover {
     border: 2.5px solid #5f627d;
     background-color: #FFF9CC;
     transition: 500ms;

@@ -18,7 +18,7 @@
   import rules from '@/store/states/rules.js';
 
   export default {
-    data: () => {
+    data() {
       return {
         rules
       };

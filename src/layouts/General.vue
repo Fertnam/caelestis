@@ -27,21 +27,21 @@
 </template>
 
 <script>
-import Logo from '@/components/Logo';
-import Navbar from '@/components/general/navbars/Navbar';
-import MobileNavbar from '@/components/general/navbars/MobileNavbar';
-import ServerMonitoring from '@/components/general/aside-wrappers/ServerMonitoring';
-import Usermenu from '@/components/general/aside-wrappers/Usermenu';
+  import Logo from '@/components/Logo';
+  import Navbar from '@/components/general/navbars/Navbar';
+  import MobileNavbar from '@/components/general/navbars/MobileNavbar';
+  import ServerMonitoring from '@/components/general/aside-wrappers/ServerMonitoring';
+  import Usermenu from '@/components/general/aside-wrappers/Usermenu';
 
-export default {
-  components: {
-    Logo,
-    Navbar,
-    MobileNavbar,
-    ServerMonitoring,
-    Usermenu
-  }
-};
+  export default {
+    components: {
+      Logo,
+      Navbar,
+      MobileNavbar,
+      ServerMonitoring,
+      Usermenu
+    }
+  };
 </script>
 
 <style>
@@ -113,7 +113,7 @@ export default {
 
   /* Header */
   header {
-    background: url(/assets/images/header-bg.png) center 90% / cover;
+    background: url(/images/header-bg.png) center 90% / cover;
     height: 35vh;
     display: flex;
     justify-content: center;

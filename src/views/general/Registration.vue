@@ -6,7 +6,7 @@
 </template>
 
 <script>
-  import RegistrationForm from '@/components/general/forms/RegistrationForm';
+  import RegistrationForm from '@/components/general/forms/Registration';
 
   export default {
     components: {
@@ -14,9 +14,3 @@
     }
   };
 </script>
-
-<style scoped>
-  h1 {
-    margin-bottom: 36px;
-  }
-</style>

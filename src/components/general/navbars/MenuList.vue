@@ -33,7 +33,7 @@
   import menuItems from '@/store/states/menu-items.js';
 
   export default {
-    data: () => {
+    data() {
       return {
         menuItems
       };
