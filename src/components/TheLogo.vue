@@ -1,11 +1,11 @@
 <template>
   <router-link
-    tag="img"
-    :to="{name: 'general-home'}"
     id="logo"
     src="/images/logo.png"
-    alt="Логотип"
     draggable="false"
+    alt="Логотип"
+    tag="img"
+    :to="{name: 'general-home'}"
     exact
   />
 </template>

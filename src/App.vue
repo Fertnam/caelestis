@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <router-view/>
   </div>
 </template>
 
@@ -11,6 +11,16 @@
   * {
     box-sizing: border-box;
     outline: none;
+  }
+
+  input, button, select {
+    width: 100%;
+    font-size: 1em;
+    transition-duration: 500ms;
+  }
+
+  input[type="submit"], button, select {
+    cursor: pointer;
   }
 
   .clearfix:after {

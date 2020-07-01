@@ -1,7 +1,7 @@
 <template>
   <div id="wrapper">
     <header>
-      <logo></logo>
+      <TheLogo/>
     </header>
     <div id="navbar-wrapper">
       <navbar></navbar>
@@ -13,7 +13,7 @@
         enter-active-class="animate__animated animate__fadeIn animate__faster"
         leave-active-class="animate__animated animate__fadeOut animate__faster"
       >
-        <router-view></router-view>
+        <router-view/>
       </transition>
     </main>
     <aside>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-  import Logo from '@/components/Logo';
+  import TheLogo from '@/components/TheLogo';
   import Navbar from '@/components/general/navbars/Navbar';
   import MobileNavbar from '@/components/general/navbars/MobileNavbar';
   import ServerMonitoring from '@/components/general/aside-wrappers/ServerMonitoring';
@@ -35,7 +35,7 @@
 
   export default {
     components: {
-      Logo,
+      TheLogo,
       Navbar,
       MobileNavbar,
       ServerMonitoring,
@@ -96,10 +96,6 @@
     box-shadow: -6px 6px #5f627d;
     padding: 16px;
     font-weight: bold;
-  }
-
-  button, input[type="submit"], #logo {
-    cursor: pointer;
   }
 
   .menu-list {
