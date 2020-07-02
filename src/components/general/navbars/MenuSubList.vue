@@ -1,10 +1,13 @@
 <template>
   <ul class="submenu-list">
-    <li v-for="(item, index) in items" :key="index">
+    <li
+      v-for="(item, index) in items"
+      :key="index"
+    >
       <router-link
         :to="item.route"
       >
-        <a>{{ item.name }}</a>
+        {{ item.name }}
       </router-link>
     </li>
   </ul>

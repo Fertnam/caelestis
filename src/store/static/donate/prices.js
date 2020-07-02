@@ -1,8 +1,8 @@
-const headers = ['Срок', 'Игрок', 'VIP', 'Gold', 'Premium', 'Niobium'];
+const captions = ['Срок', 'Игрок', 'VIP', 'Gold', 'Premium', 'Niobium'];
 
-const bodies = [
+const contents = [
   ['30 дней', 'Бесплатно', '599 руб', '599 руб', '599 руб', '599 руб'],
   ['Навсегда', '599 руб', '599 руб', '599 руб', '599 руб', '599 руб']
 ];
 
-export { headers, bodies };
+export { captions, contents };

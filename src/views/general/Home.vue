@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home-page-wrapper">
     <h1>Главная</h1>
     <div id="articles-wrapper">
       <caelestis-article
@@ -15,7 +15,7 @@
 
 <script>
   import CaelestisArticle from '@/components/general/Article';
-  import articles from '@/store/states/articles.js';
+  import articles from '@/store/static/articles';
 
   export default {
     data() {

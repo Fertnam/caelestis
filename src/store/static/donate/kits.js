@@ -1,6 +1,6 @@
-const headers = ['Наборы (/kit)', 'Игрок', 'VIP', 'Gold', 'Premium', 'Niobium'];
+const captions = ['Наборы (/kit)', 'Игрок', 'VIP', 'Gold', 'Premium', 'Niobium'];
 
-const bodies = [
+const contents = [
   ['/kit start (только при первом заходе)', true, true, true, true, true],
   ['/kit vip', false, true, false, false, false],
   ['/kit gold', false, false, true, false, false],
@@ -8,4 +8,4 @@ const bodies = [
   ['/kit niobium', false, false, false, false, true]
 ];
 
-export { headers, bodies };
+export { captions, contents };

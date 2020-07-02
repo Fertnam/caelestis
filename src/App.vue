@@ -19,7 +19,7 @@
     transition-duration: 500ms;
   }
 
-  input[type="submit"], button, select {
+  button, select {
     cursor: pointer;
   }
 

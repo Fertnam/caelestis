@@ -1,24 +1,24 @@
 <template>
-  <div>
+  <div id="donate-page-wrapper">
     <h1>Донат</h1>
     <div id="donate-tables-wrapper">
-      <services-table></services-table>
-      <kits-table></kits-table>
-      <prices-table></prices-table>
+      <DonateServicesTable/>
+      <DonateKitsTable/>
+      <DonatePricesTable/>
     </div>
   </div>
 </template>
 
 <script>
-  import ServicesTable from '@/components/general/tables/donate/Services';
-  import KitsTable from '@/components/general/tables/donate/Kits';
-  import PricesTable from '@/components/general/tables/donate/Prices';
+  import DonateServicesTable from '@/components/general/tables/DonateServicesTable';
+  import DonateKitsTable from '@/components/general/tables/DonateKitsTable';
+  import DonatePricesTable from '@/components/general/tables/DonatePricesTable';
 
   export default {
     components: {
-      ServicesTable,
-      KitsTable,
-      PricesTable
+      DonateServicesTable,
+      DonateKitsTable,
+      DonatePricesTable
     }
   };
 </script>

@@ -1,17 +1,17 @@
 <template>
-  <div class="rules-wrapper">
+  <div class="rules-section">
     <h3>
-      <fa-icon :icon="icon"></fa-icon>
-      {{ header }}
+      <fa-icon :icon="icon"/>
+      {{ caption }}
     </h3>
     <div>
-      <rule-clause
+      <RuleClause
         v-for="(clause, index) in clauses"
         :key="index"
         :number="clause.number"
         :appellation="clause.appellation"
         :punishment="clause.punishment"
-      ></rule-clause>
+      />
     </div>
   </div>
 </template>
@@ -20,8 +20,11 @@
   import RuleClause from './RuleClause';
 
   export default {
+    components: {
+      RuleClause
+    },
     props: {
-      header: {
+      caption: {
         type: String,
         required: true
       },
@@ -33,19 +36,16 @@
         type: Array,
         required: true
       }
-    },
-    components: {
-      RuleClause
     }
   };
 </script>
 
 <style>
-  .rules-wrapper:not(:last-child) {
+  .rules-section:not(:last-child) {
     margin-bottom: 30px;
   }
 
-  .rules-wrapper > h3 {
+  .rules-section > h3 {
     background-color: #101121;
     color: #878cb0;
     text-transform: uppercase;
@@ -53,14 +53,16 @@
     text-align: center;
   }
 
-  .rules-wrapper svg {
+  .rules-section svg {
     margin-right: 4px;
-    transition: 500ms;
   }
 
-  .rules-wrapper:hover svg {
+  .rules-section:hover svg {
     color: #FFF9CC;
     transform: scale(1.15);
+  }
+
+  .rules-section svg, .rules-section:hover svg {
     transition: 500ms;
   }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <nav id="navbar">
-    <button id="mobile-navbar-button"><i class="fas fa-bars">Меню</i></button>
-    <menu-list></menu-list>
+    <button id="mobile-navbar-button">+</button>
+    <MenuList/>
     <router-link
       id="start-game-link"
       :to="{name: 'general-registration'}"
     >
-      <fa-icon icon="gamepad" size="2x"></fa-icon>
+      <fa-icon icon="gamepad" size="2x"/>
       Пора играть
     </router-link>
   </nav>

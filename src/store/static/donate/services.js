@@ -1,6 +1,6 @@
-const headers = ['Услуги', 'Игрок', 'VIP', 'Gold', 'Premium', 'Niobium'];
+const captions = ['Услуги', 'Игрок', 'VIP', 'Gold', 'Premium', 'Niobium'];
 
-const bodies = [
+const contents = [
   ['Регионы', '3x550000', '4x800000', '6x1050000', '8x2050000', '12x5050000'],
   ['Количество точек домов', '2', '3', '5', '8', '12'],
   ['Количество сундуков-магазинов', '30', '40', '50', '60', '70'],
@@ -20,4 +20,4 @@ const bodies = [
   ['/feed', false, false, false, false, true]
 ];
 
-export { headers, bodies };
+export { captions, contents };

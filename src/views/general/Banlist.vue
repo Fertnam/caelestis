@@ -1,19 +1,25 @@
 <template>
-  <div>
+  <div id="banlist-page-wrapper">
     <h1>Бан-лист</h1>
-    <find-banned-users-form></find-banned-users-form>
-    <banned-users-table></banned-users-table>
+    <UsersBannedFindForm/>
+    <UsersBannedTable/>
   </div>
 </template>
 
 <script>
-  import FindBannedUsersForm from '@/components/general/forms/FindBannedUsers';
-  import BannedUsersTable from '@/components/general/tables/BannedUsers';
+  import UsersBannedFindForm from '@/components/general/forms/UsersBannedFindForm';
+  import UsersBannedTable from '@/components/general/tables/UsersBannedTable';
 
   export default {
     components: {
-      FindBannedUsersForm,
-      BannedUsersTable
+      UsersBannedFindForm,
+      UsersBannedTable
     }
   };
 </script>
+
+<style>
+  #find-banned-users-form {
+    margin-bottom: 30px;
+  }
+</style>

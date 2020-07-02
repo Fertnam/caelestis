@@ -1,5 +1,5 @@
 <template>
-  <div id="wrapper">
+  <div id="layout-wrapper">
     <header>
       <TheLogo/>
     </header>
@@ -17,8 +17,10 @@
       </transition>
     </main>
     <aside>
-      <usermenu></usermenu>
-      <server-monitoring></server-monitoring>
+      <div id="aside-elements-wrapper">
+        <TheAsideUsermenu/>
+        <TheAsideServerMonitoring/>
+      </div>
     </aside>
     <footer>
       <p>Копирование элементов дизайна запрещено</p>
@@ -30,23 +32,23 @@
   import TheLogo from '@/components/TheLogo';
   import Navbar from '@/components/general/navbars/Navbar';
   import MobileNavbar from '@/components/general/navbars/MobileNavbar';
-  import ServerMonitoring from '@/components/general/aside-wrappers/ServerMonitoring';
-  import Usermenu from '@/components/general/aside-wrappers/Usermenu';
+  import TheAsideServerMonitoring from '@/components/general/TheAsideServerMonitoring';
+  import TheAsideUsermenu from '@/components/general/TheAsideUsermenu';
 
   export default {
     components: {
       TheLogo,
       Navbar,
       MobileNavbar,
-      ServerMonitoring,
-      Usermenu
+      TheAsideServerMonitoring,
+      TheAsideUsermenu
     }
   };
 </script>
 
 <style>
   /* Настройка сетки grid */
-  #wrapper {
+  #layout-wrapper {
     display: grid;
     grid-template-columns: 72% 28%;
     grid-template-areas: "header header"
@@ -98,11 +100,6 @@
     font-weight: bold;
   }
 
-  .menu-list {
-    margin: 0;
-    padding: 0;
-  }
-
   .menu-list > li {
     font-weight: bold;
   }
@@ -127,6 +124,11 @@
     text-align: center;
     padding: 30px;
     background-color: #9fa1b3;
+  }
+
+  #aside-elements-wrapper {
+    position: sticky;
+    top: 30px;
   }
 
   /* Footer */

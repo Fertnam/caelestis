@@ -1,14 +1,14 @@
 <template>
-  <div class="aside-wrapper-model">
-    <h2 v-if="header">{{ header }}</h2>
-    <slot></slot>
+  <div class="aside-element-model">
+    <h2 v-if="caption">{{ caption }}</h2>
+    <slot/>
   </div>
 </template>
 
 <script>
   export default {
     props: {
-      header: {
+      caption: {
         type: String
       }
     }
@@ -16,19 +16,18 @@
 </script>
 
 <style>
-  .aside-wrapper-model {
+  .aside-element-model {
     background-color: #101121;
     color: #878cb0;
     padding: 20px;
     box-shadow: -8px 8px #0c0d1a;
   }
 
-  .aside-wrapper-model:not(:last-child) {
+  .aside-element-model:not(:last-child) {
     margin-bottom: 38px;
   }
 
-  .aside-wrapper-model h2 {
-    margin: 0;
+  .aside-element-model h2 {
     font-size: 1.25em;
     padding-bottom: 20px;
     font-weight: bold;

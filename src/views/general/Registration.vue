@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="registration-page-wrapper">
     <h1>Регистрация</h1>
-    <registration-form></registration-form>
+    <RegistrationForm/>
   </div>
 </template>
 

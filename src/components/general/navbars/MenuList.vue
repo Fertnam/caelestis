@@ -1,45 +1,66 @@
 <template>
   <ul class="menu-list">
-    <li v-for="(item, index) in menuItems" :key="index">
+    <li>
       <router-link
-        v-if="item.route"
-        :to="item.route"
-        active-class="active-menu-item"
+        :to="{name: 'general-home'}"
+        :active-class="activeClass"
         exact
       >
-        <fa-icon :icon="item.icon"></fa-icon>
-        {{ item.name }}
+        <fa-icon icon="home"/>
+        Главная
       </router-link>
-      <a
-        v-else-if="item.href"
-        :href="item.href"
-      >
-        <fa-icon :icon="item.icon"></fa-icon>
-        {{ item.name }}
+    </li>
+    <li>
+      <a href="/forum">
+        <fa-icon icon="comments"/>
+        Форум
       </a>
-      <template v-else>
-        <a>
-          <fa-icon :icon="item.icon"></fa-icon>
-          {{ item.name }}
-        </a>
-        <submenu-list :items="item.subitems"></submenu-list>
-      </template>
+    </li>
+    <li>
+      <a>
+        <fa-icon icon="list-alt"/>
+        Сервера
+      </a>
+    </li>
+    <li>
+      <router-link
+        :to="{name: 'general-banlist'}"
+        :active-class="activeClass"
+        exact
+      >
+        <fa-icon icon="scroll"/>
+        Бан-лист
+      </router-link>
+    </li>
+    <li>
+      <router-link
+        :to="{name: 'general-donate'}"
+        :active-class="activeClass"
+        exact
+      >
+        <fa-icon icon="donate"/>
+        Донат
+      </router-link>
+    </li>
+    <li>
+      <router-link
+        :to="{name: 'general-rules'}"
+        :active-class="activeClass"
+        exact
+      >
+        <fa-icon icon="clipboard-list"/>
+        Правила
+      </router-link>
     </li>
   </ul>
 </template>
 
 <script>
-  import SubmenuList from './SubmenuList';
-  import menuItems from '@/store/states/menu-items.js';
-
   export default {
     data() {
       return {
-        menuItems
+        activeClass: 'active-menu-item'
       };
-    },
-    components: {
-      SubmenuList
     }
   };
 </script>
@@ -55,11 +76,13 @@
   .menu-list svg {
     margin-right: 2px;
     font-size: 1.1em;
-    transition: 500ms;
   }
 
   .menu-list > li > a:hover svg, .active-menu-item svg {
     color: #FFF9CC;
-    transition: 500ms;
+  }
+
+  .menu-list svg, .menu-list > li > a:hover svg, .active-menu-item svg {
+    transition: 500ms color;
   }
 </style>

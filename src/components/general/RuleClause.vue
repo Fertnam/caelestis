@@ -1,7 +1,15 @@
 <template>
   <div class="rule-clause">
-    <p><span>{{ number }}</span>{{ appellation }}</p>
-    <p class="rule-punishment" v-if="punishment">Наказание: {{ punishment }}</p>
+    <p>
+      <span>{{ number }}</span>
+      {{ appellation }}
+    </p>
+    <p
+      v-if="punishment"
+      class="rule-punishment"
+    >
+      Наказание: {{ punishment }}
+    </p>
   </div>
 </template>
 

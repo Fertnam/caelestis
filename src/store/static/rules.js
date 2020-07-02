@@ -1,6 +1,6 @@
 export default [
   {
-    header: 'Общее положение',
+    caption: 'Общее положение',
     icon: 'cogs',
     clauses: [
       {
@@ -14,7 +14,7 @@ export default [
     ]
   },
   {
-    header: 'Игровой процесс',
+    caption: 'Игровой процесс',
     icon: 'dice',
     clauses: [
       {
@@ -30,7 +30,7 @@ export default [
     ]
   },
   {
-    header: 'Общение',
+    caption: 'Общение',
     icon: 'comment-dots',
     clauses: [
       {
@@ -46,7 +46,7 @@ export default [
     ]
   },
   {
-    header: 'Модераторы',
+    caption: 'Модераторы',
     icon: 'crown',
     clauses: [
       {
@@ -62,7 +62,7 @@ export default [
     ]
   },
   {
-    header: 'Прочее',
+    caption: 'Прочее',
     icon: 'ellipsis-h',
     clauses: [
       {

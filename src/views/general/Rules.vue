@@ -1,30 +1,30 @@
 <template>
-  <div>
+  <div id="rules-page-wrapper">
     <h1>Правила</h1>
     <div>
-      <rule
+      <RulesSection
         v-for="(rule, index) in rules"
         :key="index"
-        :header="rule.header"
+        :caption="rule.caption"
         :icon="rule.icon"
         :clauses="rule.clauses"
-      ></rule>
+      />
     </div>
   </div>
 </template>
 
 <script>
-  import Rule from '@/components/general/rules/Rule';
-  import rules from '@/store/states/rules.js';
+  import RulesSection from '@/components/general/RulesSection';
+  import rules from '@/store/static/rules';
 
   export default {
+    components: {
+      RulesSection
+    },
     data() {
       return {
         rules
       };
-    },
-    components: {
-      Rule
     }
   };
 </script>
