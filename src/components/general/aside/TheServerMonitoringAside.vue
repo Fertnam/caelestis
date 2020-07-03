@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import BaseAsideElement from './base/BaseAsideElement';
+  import BaseAsideElement from '../base/BaseAsideElement';
 
   export default {
     components: {

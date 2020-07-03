@@ -1,5 +1,5 @@
 <template>
-  <div class="aside-element-model">
+  <div class="aside-element-model dark-theme">
     <h2 v-if="caption">{{ caption }}</h2>
     <slot/>
   </div>
@@ -17,8 +17,6 @@
 
 <style>
   .aside-element-model {
-    background-color: #101121;
-    color: #878cb0;
     padding: 20px;
     box-shadow: -8px 8px #0c0d1a;
   }

@@ -16,11 +16,18 @@
   input, button, select {
     width: 100%;
     font-size: 1em;
+  }
+
+  button, select, a {
+    cursor: pointer;
+  }
+
+  input, button, select, svg {
     transition-duration: 500ms;
   }
 
-  button, select {
-    cursor: pointer;
+  svg {
+    transition-property: color, transform;
   }
 
   .clearfix:after {

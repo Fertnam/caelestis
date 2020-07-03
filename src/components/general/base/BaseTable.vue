@@ -3,7 +3,10 @@
     class="table-model"
     v-on="$listeners"
   >
-    <thead v-if="captions">
+    <thead
+      v-if="captions"
+      class="dark-theme"
+    >
       <tr>
         <td
           v-for="(caption, index) in captions"
@@ -61,8 +64,6 @@
   }
 
   .table-model thead {
-    background-color: #101121;
-    color: #878cb0;
     text-transform: uppercase;
   }
 

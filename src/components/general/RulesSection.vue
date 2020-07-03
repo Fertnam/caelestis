@@ -1,16 +1,16 @@
 <template>
   <div class="rules-section">
-    <h3>
+    <h3 class="dark-theme">
       <fa-icon :icon="icon"/>
       {{ caption }}
     </h3>
     <div>
       <RuleClause
-        v-for="(clause, index) in clauses"
+        v-for="({number, appellation, punishment}, index) in clauses"
         :key="index"
-        :number="clause.number"
-        :appellation="clause.appellation"
-        :punishment="clause.punishment"
+        :number="number"
+        :appellation="appellation"
+        :punishment="punishment"
       />
     </div>
   </div>
@@ -46,8 +46,6 @@
   }
 
   .rules-section > h3 {
-    background-color: #101121;
-    color: #878cb0;
     text-transform: uppercase;
     padding: 14px;
     text-align: center;
@@ -60,9 +58,5 @@
   .rules-section:hover svg {
     color: #FFF9CC;
     transform: scale(1.15);
-  }
-
-  .rules-section svg, .rules-section:hover svg {
-    transition: 500ms;
   }
 </style>

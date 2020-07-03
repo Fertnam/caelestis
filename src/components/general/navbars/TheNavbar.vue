@@ -1,9 +1,13 @@
 <template>
-  <nav id="navbar">
+  <nav
+    id="navbar"
+    class="dark-theme"
+  >
     <button id="mobile-navbar-button">+</button>
     <MenuList/>
     <router-link
       id="start-game-link"
+      class="light-theme"
       :to="{name: 'general-registration'}"
     >
       <fa-icon icon="gamepad" size="2x"/>
@@ -24,7 +28,6 @@
 
 <style>
   #navbar {
-    background-color: #101121;
     padding: 20px 4% 20px;
     display: flex;
     justify-content: space-between;
@@ -33,13 +36,11 @@
   }
 
   #navbar > a {
-    background-color: #878cb0;
     padding: 4px 0;
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.2em;
-    color: #101121;
     box-shadow: -6px 6px #5f627d;
   }
 
@@ -56,9 +57,7 @@
 
   #mobile-navbar-button {
     display: none;
-    background-color: #101121;
     border: none;
-    color: #878cb0;
     font-size: 1.5em;
     padding: 0;
   }

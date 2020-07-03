@@ -5,8 +5,8 @@
 </template>
 
 <script>
-  import BaseAsideElement from './base/BaseAsideElement';
-  import AuthorizationForm from './forms/AuthorizationForm';
+  import BaseAsideElement from '../base/BaseAsideElement';
+  import AuthorizationForm from '../forms/AuthorizationForm';
 
   export default {
     components: {

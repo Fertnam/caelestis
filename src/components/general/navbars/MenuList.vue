@@ -68,8 +68,8 @@
 <style>
   .menu-list a {
     color: #878cb0;
+    font-weight: bold;
     text-decoration: none;
-    cursor: pointer;
     text-transform: uppercase;
   }
 
@@ -80,9 +80,5 @@
 
   .menu-list > li > a:hover svg, .active-menu-item svg {
     color: #FFF9CC;
-  }
-
-  .menu-list svg, .menu-list > li > a:hover svg, .active-menu-item svg {
-    transition: 500ms color;
   }
 </style>

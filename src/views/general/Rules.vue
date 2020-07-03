@@ -3,11 +3,11 @@
     <h1>Правила</h1>
     <div>
       <RulesSection
-        v-for="(rule, index) in rules"
+        v-for="({caption, icon, clauses}, index) in rulesSections"
         :key="index"
-        :caption="rule.caption"
-        :icon="rule.icon"
-        :clauses="rule.clauses"
+        :caption="caption"
+        :icon="icon"
+        :clauses="clauses"
       />
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <script>
   import RulesSection from '@/components/general/RulesSection';
-  import rules from '@/store/static/rules';
+  import rulesSections from '@/store/static/rules-sections';
 
   export default {
     components: {
@@ -23,7 +23,7 @@
     },
     data() {
       return {
-        rules
+        rulesSections
       };
     }
   };

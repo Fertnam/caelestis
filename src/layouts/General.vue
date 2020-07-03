@@ -3,9 +3,9 @@
     <header>
       <TheLogo/>
     </header>
-    <div id="navbar-wrapper">
-      <navbar></navbar>
-      <mobile-navbar></mobile-navbar>
+    <div id="navbars-wrapper">
+      <TheNavbar/>
+      <TheNavbarMobile/>
     </div>
     <main>
       <transition
@@ -18,11 +18,11 @@
     </main>
     <aside>
       <div id="aside-elements-wrapper">
-        <TheAsideUsermenu/>
-        <TheAsideServerMonitoring/>
+        <TheUsermenuAside/>
+        <TheServerMonitoringAside/>
       </div>
     </aside>
-    <footer>
+    <footer class="dark-theme">
       <p>Копирование элементов дизайна запрещено</p>
     </footer>
   </div>
@@ -30,18 +30,18 @@
 
 <script>
   import TheLogo from '@/components/TheLogo';
-  import Navbar from '@/components/general/navbars/Navbar';
-  import MobileNavbar from '@/components/general/navbars/MobileNavbar';
-  import TheAsideServerMonitoring from '@/components/general/TheAsideServerMonitoring';
-  import TheAsideUsermenu from '@/components/general/TheAsideUsermenu';
+  import TheNavbar from '@/components/general/navbars/TheNavbar';
+  import TheNavbarMobile from '@/components/general/navbars/TheNavbarMobile';
+  import TheServerMonitoringAside from '@/components/general/aside/TheServerMonitoringAside';
+  import TheUsermenuAside from '@/components/general/aside/TheUsermenuAside';
 
   export default {
     components: {
       TheLogo,
-      Navbar,
-      MobileNavbar,
-      TheAsideServerMonitoring,
-      TheAsideUsermenu
+      TheNavbar,
+      TheNavbarMobile,
+      TheServerMonitoringAside,
+      TheUsermenuAside
     }
   };
 </script>
@@ -52,7 +52,7 @@
     display: grid;
     grid-template-columns: 72% 28%;
     grid-template-areas: "header header"
-                         "navbar-wrapper navbar-wrapper"
+                         "navbars navbars"
                          "main aside"
                          "footer footer";
   }
@@ -61,12 +61,12 @@
     grid-area: header;
   }
 
-  #navbar-wrapper {
-    grid-area: navbar-wrapper;
+  #navbars-wrapper {
+    grid-area: navbars;
   }
 
-  #mobile-menu {
-    grid-area: mobile-menu;
+  #mobile-navbar {
+    grid-area: mobile-navbar;
   }
 
   main {
@@ -81,60 +81,58 @@
     grid-area: footer;
   }
 
-  /* Остальные настройки */
-  body {
-    font-family: Arial, sans-serif;
-    color: #878cb0;
-  }
-
-  main, aside {
-    color: #101121;
-  }
-
+  /* Базовые стили для всех элементов layout */
   h1 {
-    margin: 0 0 50px;
+    margin-bottom: 40px;
     font-size: 1.5em;
-    background-color: #878cb0;
     box-shadow: -6px 6px #5f627d;
     padding: 16px;
     font-weight: bold;
   }
 
-  .menu-list > li {
-    font-weight: bold;
+  .dark-theme {
+    background-color: #101121;
+    color: #878cb0;
   }
 
-  /* Header */
+  .light-theme, h1 {
+    background-color: #878cb0;
+  }
+
+  .light-theme, main {
+    color: #101121;
+  }
+
+  /* Стили для секций */
+  body {
+    font-family: Arial, sans-serif;
+  }
+
   header {
     background: url(/images/header-bg.png) center 90% / cover;
-    height: 35vh;
+    padding: 7%;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
-  /* Main */
-  main {
+  main, aside, footer {
     padding: 30px;
+  }
+
+  main {
     background-color: #c6c9de;
   }
 
-  /* Aside */
-  aside {
+  aside, footer {
     text-align: center;
-    padding: 30px;
+  }
+
+  aside {
     background-color: #9fa1b3;
   }
 
   #aside-elements-wrapper {
     position: sticky;
     top: 30px;
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 20px 30px;
-    background-color: #101121;
   }
 </style>
