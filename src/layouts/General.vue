@@ -65,10 +65,6 @@
     grid-area: navbars;
   }
 
-  #mobile-navbar {
-    grid-area: mobile-navbar;
-  }
-
   main {
     grid-area: main;
   }
@@ -113,6 +109,12 @@
     padding: 7%;
     display: flex;
     justify-content: center;
+  }
+
+  #navbars-wrapper a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
   }
 
   main, aside, footer {

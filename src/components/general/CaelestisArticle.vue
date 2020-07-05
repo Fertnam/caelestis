@@ -1,15 +1,26 @@
 <template>
   <article>
-    <div class="article-header">
-      <p>{{ header }}</p>
-      <p><fa-icon icon="calendar-alt"></fa-icon> {{ date }}</p>
+    <div class="article-header light-theme">
+      <p>{{ caption }}</p>
+      <p>
+        <fa-icon icon="calendar-alt"/>
+        {{ date }}
+      </p>
     </div>
     <div class="article-body">
-      <img src="https://caelestis.ru/templates/images/slider/1.png" alt="Картинка к статье" />
-      <p>{{ body }}</p>
+      <img
+        src="https://caelestis.ru/templates/images/slider/1.png"
+        alt="Картинка к статье"
+      />
+      <p>{{ content }}</p>
     </div>
     <div class="article-footer clearfix">
-      <a href>Подробнее</a>
+      <router-link
+        class="dark-theme"
+        :to="{name: 'general-banlist'}"
+      >
+        Подробнее
+      </router-link>
     </div>
   </article>
 </template>
@@ -17,7 +28,7 @@
 <script>
   export default {
     props: {
-      header: {
+      caption: {
         type: String,
         required: true
       },
@@ -25,7 +36,7 @@
         type: String,
         required: true
       },
-      body: {
+      content: {
         type: String,
         required: true
       }
@@ -33,13 +44,12 @@
   };
 </script>
 
-<style scoped>
+<style>
   article:not(:last-child) {
     margin-bottom: 30px;
   }
 
   .article-header {
-    background-color: #878cb0;
     box-shadow: -6px 6px #5f627d;
     margin-bottom: 26px;
     padding: 16px;
@@ -73,11 +83,8 @@
   }
 
   .article-footer a {
-    background-color: #101121;
-    color: #878cb0;
     text-decoration: none;
     padding: 12px;
-    display: block;
     float: right;
   }
 </style>

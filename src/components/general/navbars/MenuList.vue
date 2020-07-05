@@ -66,13 +66,6 @@
 </script>
 
 <style>
-  .menu-list a {
-    color: #878cb0;
-    font-weight: bold;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-
   .menu-list svg {
     margin-right: 2px;
     font-size: 1.1em;

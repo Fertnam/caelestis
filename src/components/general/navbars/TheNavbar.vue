@@ -37,9 +37,6 @@
 
   #navbar > a {
     padding: 4px 0;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: bold;
     font-size: 1.2em;
     box-shadow: -6px 6px #5f627d;
   }
@@ -57,9 +54,7 @@
 
   #mobile-navbar-button {
     display: none;
-    border: none;
     font-size: 1.5em;
-    padding: 0;
   }
 
   #navbar .menu-list {

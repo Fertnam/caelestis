@@ -1,6 +1,6 @@
 <template>
   <nav id="mobile-navbar">
-    <menu-list></menu-list>
+    <MenuList/>
   </nav>
 </template>
 

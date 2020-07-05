@@ -16,6 +16,8 @@
   input, button, select {
     width: 100%;
     font-size: 1em;
+    border: none;
+    padding: 0;
   }
 
   button, select, a {
@@ -28,6 +30,10 @@
 
   svg {
     transition-property: color, transform;
+  }
+
+  a {
+    color: inherit;
   }
 
   .clearfix:after {
